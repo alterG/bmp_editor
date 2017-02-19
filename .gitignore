@@ -1,0 +1,4 @@
+# no object files and archives
+.[oa]
+# no temp files
+*~
