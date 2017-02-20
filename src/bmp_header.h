@@ -9,7 +9,7 @@ typedef struct bitmap_header_t {
 	uint32_t bfileSize;				/* file size (in bytes) */
 	uint16_t bfReserved1;			/* reserved (need to be 0) */
 	uint16_t bfReserved2;			/* reserved (need to be 0) */
-	uint32_t b0ffBits;				/* space (in bytes) till bit raster */
+	uint32_t b0ffBits;				/* space (in bytes) between start of file and bit raster */
  
 	uint32_t biSize;				/* size of struct */
 	uint32_t biWidth;				/* pixels in width */

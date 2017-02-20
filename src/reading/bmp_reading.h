@@ -3,12 +3,12 @@
 #include <rastr.h>
 
 typedef enum read_error_code_t {
-	READ_OK = 0,
+	READ_SUCCESS = 0,
 	READ_INVALID_SIGNATURE,
 	READ_INVALID_RESOLUTION,
 	READ_FILE_NOT_FOUND
 } read_error_code_t;
 
-read_error_code_t from_bmp(char *, image_t * const); 
+reading_error_code_t from_bmp(char *, image_t * const); 
 
 #endif
