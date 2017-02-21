@@ -24,7 +24,7 @@ writing_error_code_t to_bmp(char * const image_path, image_t * const image) {
 	return WRITE_SUCCESS;
 }
 
-void bitmap_header_t_init (bitmap_header_t * const bitmap_header, image_t * const image) {
+static void bitmap_header_t_init (bitmap_header_t * const bitmap_header, image_t * const image) {
  	bitmap_header->bfType = 0x4d42;	
   	bitmap_header->bfileSize = 54 + ((image->width)*sizeof(pixel_t)+offset)*(image->height);	
   	bitmap_header->bfReserved1 = 0;
