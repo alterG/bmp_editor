@@ -5,6 +5,7 @@
 #include "rastr.h"
 
 
+
 writing_error_code_t to_bmp(char * const image_path, image_t * const image) {
 	bitmap_header_t bitmap_header;
 	int i, j, offset;
@@ -12,14 +13,15 @@ writing_error_code_t to_bmp(char * const image_path, image_t * const image) {
 	if (output_image == NULL) return WRITE_ERROR;
 	bitmap_header_t_init(bitmap_header, image);
 	offset = ((image->width)*sizeof(pixel_t)) % 4;
-	if (offset != 0) offset= 4-offset;
+	if (offset != 0) offset = 4-offset;
 	fwrite(&bitmap_header, sizeof(bitmap_header_t), 1, output_image);
 	fseek(output_image, sizeof(bitmap_header_t), SEEK_SET);
 	for (i = 0; i < image->height; i++) {
 		for (j=0; j < image->width; j++) {
-			fwrite(&(image->rastr)[i*(image->width)+j], sizeof(pixel_t), 1, output_image);
+			fwrite((image->rastr)[i*(image->width)+j], sizeof(pixel_t), 1, output_image);
 		}
-	fseek(output_image, offset, SEEK_CUR);
+		fseek(output_image, offset, SEEK_CUR);
+	}
 	fclose(output_image);
 	return WRITE_SUCCESS;
 }

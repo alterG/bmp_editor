@@ -1,5 +1,5 @@
-#ifndef RASTR_H
-#define RASTR_H
+#ifndef _RASTR_H_
+#define _RASTR_H_
 
 typedef struct pixel_t {
 	uint8_t rgbtBlue;

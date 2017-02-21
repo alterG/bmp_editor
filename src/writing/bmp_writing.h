@@ -1,5 +1,5 @@
-#ifndef _BMP_WRITING_H
-#define _BMP_WRITING_H
+#ifndef _BMP_WRITING_H_
+#define _BMP_WRITING_H_
 
 typedef struct writing_error_code_t {
 	WRITE_SUCCESS = 0,
