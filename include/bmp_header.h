@@ -1,6 +1,9 @@
 #ifndef _BMP_HEADER_H
 #define _BMP_HEADER_H
 
+#include <stdlib.h>
+#include <stdint.h>
+
 #pragma pack(push, 2)
 
 typedef struct bitmap_header_t {

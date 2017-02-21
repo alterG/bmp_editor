@@ -11,14 +11,14 @@ writing_error_code_t to_bmp(char * const image_path, image_t * const image) {
 	int i, j, offset;
 	FILE * output_image = fopen(image_path, "wb");
 	if (output_image == NULL) return WRITE_ERROR;
-	bitmap_header_t_init(bitmap_header, image);
 	offset = ((image->width)*sizeof(pixel_t)) % 4;
 	if (offset != 0) offset = 4-offset;
+	bitmap_header_t_init(&bitmap_header, image, offset);
 	fwrite(&bitmap_header, sizeof(bitmap_header_t), 1, output_image);
 	fseek(output_image, sizeof(bitmap_header_t), SEEK_SET);
 	for (i = 0; i < image->height; i++) {
 		for (j=0; j < image->width; j++) {
-			fwrite((image->rastr)[i*(image->width)+j], sizeof(pixel_t), 1, output_image);
+			fwrite(&(image->rastr)[i*(image->width)+j], sizeof(pixel_t), 1, output_image);
 		}
 		fseek(output_image, offset, SEEK_CUR);
 	}
@@ -26,7 +26,8 @@ writing_error_code_t to_bmp(char * const image_path, image_t * const image) {
 	return WRITE_SUCCESS;
 }
 
-static void bitmap_header_t_init (bitmap_header_t * const bitmap_header, image_t * const image) {
+static void bitmap_header_t_init 
+(bitmap_header_t * const bitmap_header, image_t * const image, int offset) {
  	bitmap_header->bfType = 0x4d42;	
   	bitmap_header->bfileSize = 54 + ((image->width)*sizeof(pixel_t)+offset)*(image->height);	
   	bitmap_header->bfReserved1 = 0;
