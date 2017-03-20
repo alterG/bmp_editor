@@ -5,17 +5,18 @@
 #include "bmp_writing.h"
 #include "bmp_rotate.h"
 
-
-
-
+void rotate(struct image_t* const src, struct image_t* const result, int angle);
 
 int main (int argc, char ** argv) {
 	image_t * source_image;
 	image_t * output_image;
 	reading_error_code_t reading_error_code;
 	writing_error_code_t writing_error_code;
-	char * source_bmp_path = "../res/example.bmp"; 
-	char * output_filename = "../res/test.bmp";
+	int angle;
+	printf("Input angle to rotate: ");
+	scanf("%d", &angle);
+	char * source_bmp_path = "../res/example.bmp";
+	char * output_filename = "../res/rotated.bmp";
 	source_image = (image_t *) malloc(sizeof(image_t));
 	output_image = (image_t *) malloc(sizeof(image_t));
 	reading_error_code = from_bmp(source_bmp_path, source_image);
@@ -33,7 +34,7 @@ int main (int argc, char ** argv) {
 			printf("File has been read successfully.\n");
 			break;
 	}
-	image_t_rotated_get(source_image, output_image);
+	image_t_rotated_get(source_image, output_image, angle);
 	writing_error_code = to_bmp(output_filename, output_image);	
 	switch (writing_error_code) {
 		case WRITE_ERROR: 
@@ -47,3 +48,4 @@ int main (int argc, char ** argv) {
 	free(output_image);
 	return 0;
 }
+
