@@ -1,2 +1,2 @@
-Program works with 24-bits bmp file. Decode it and rotate clockwise on 90 degreese. Then save result as a new file.
+Program works with 24-bits bmp file. Decode it and rotate clockwise on any angle. Then save result as a new file.
 @alterG 21.02.2017 alterg@niuitmo.ru
